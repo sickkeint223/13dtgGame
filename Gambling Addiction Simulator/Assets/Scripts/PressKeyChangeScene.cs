@@ -5,32 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class PressKeyChangeScene : MonoBehaviour
 {
-
-    
-
     [SerializeField] private GameObject uiElement;
 
-    private void OnTriggerStay(Collider trigger)
+    private void Start()
     {
-        // when F is pressed the player is sent to the casino scene
-        if (other.CompareTag("PlayerCapsule"))
+        // ui element is active
+        if (uiElement != null)
         {
+            uiElement.SetActive(false);
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
             uiElement.SetActive(true);
-
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("CasinoScene");
-            }
-
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PlayerCapsule"))
+        if (other.CompareTag("Player"))
         {
             uiElement.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        // Checking for input from the player
+        if (uiElement.activeSelf && Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene("CasinoScene");
         }
     }
 }

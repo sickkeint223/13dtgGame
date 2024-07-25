@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.13473153, g: 0.14866292, b: 0.16144633, a: 1}
+  m_IndirectSpecularColor: {r: 0.13514137, g: 0.14865485, b: 0.1615977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15891,6 +15891,7 @@ GameObject:
   - component: {fileID: 8821862564939659369}
   - component: {fileID: 9055860537736282730}
   - component: {fileID: 3179213324432080519}
+  - component: {fileID: 9055860537736282731}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -22407,6 +22408,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337969682103845159}
+  m_Mesh: {fileID: -462981019419857548, guid: 5c53859fff9699b43b4e2d1ebaea78e6, type: 3}
+--- !u!64 &9055860537736282731
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337969682103845159}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: 5c53859fff9699b43b4e2d1ebaea78e6, type: 3}
 --- !u!23 &9081784888373128012
 MeshRenderer:
