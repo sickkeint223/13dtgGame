@@ -5,21 +5,23 @@ using UnityEngine;
 public class ShowTextOnTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject uiElement;
-
-    private void Start()
-    {
-        // ui element is active
-        if (uiElement != null)
-        {
-            uiElement.SetActive(false);
-        }
-    }
+    [SerializeField] private GameObject uiElement2;
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Player"))
         {
-            uiElement.SetActive(true);
+            Debug.Log("Player entered the trigger");
+            if (uiElement != null)
+            {
+                uiElement.SetActive(true);
+            }
+
+            if (uiElement2 != null)
+            {
+                uiElement2.SetActive(true);
+            }
         }
     }
 
@@ -27,15 +29,16 @@ public class ShowTextOnTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            uiElement.SetActive(false);
+            Debug.Log("Player exited the trigger");
+            if (uiElement != null)
+            {
+                uiElement.SetActive(false);
+            }
+
+            if (uiElement2 != null)
+            {
+                uiElement2.SetActive(false);
+            }
         }
-    }
-
-
-
-
-    void Update()
-    {
-        
     }
 }
