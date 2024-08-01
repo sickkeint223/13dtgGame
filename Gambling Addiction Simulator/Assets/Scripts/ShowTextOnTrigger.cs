@@ -7,6 +7,20 @@ public class ShowTextOnTrigger : MonoBehaviour
     [SerializeField] private GameObject uiElement;
     [SerializeField] private GameObject uiElement2;
 
+    private void Start()
+    {
+        // ui element is active
+        if (uiElement != null)
+        {
+            uiElement.SetActive(false);
+        }
+
+        if (uiElement2 != null)
+        {
+            uiElement2.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
