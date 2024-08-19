@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PressKeyChangeScene : MonoBehaviour
 {
     [SerializeField] private GameObject uiElement;
+    [SerializeField] private string Scene;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class PressKeyChangeScene : MonoBehaviour
         // Checking for input from the player
         if (uiElement.activeSelf && Input.GetKeyDown(KeyCode.F))
         {
-            SceneManager.LoadScene("CasinoScene");
+            SceneManager.LoadScene(Scene);
         }
     }
 }
