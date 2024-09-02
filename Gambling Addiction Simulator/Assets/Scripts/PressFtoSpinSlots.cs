@@ -5,13 +5,18 @@ using UnityEngine;
 public class PressFtoSpinSlots : MonoBehaviour
 {
 
-    [SerializeField] private GameObject uiElement;
-    [SerializeField] private AudioSource slotsWin;
-    [SerializeField] private AudioSource slotsLose;
+    [SerializeField] private GameObject uiElement; // the text
+    [SerializeField] private AudioSource slotsWin; // winning audio
+    [SerializeField] private AudioSource slotsLose; // losing audio
     [SerializeField] private float probability = 0.1f; // probability to play the slots winning audio
-    [SerializeField] private GameObject nameText; 
+    [SerializeField] private GameObject nameText; // player name text
     [SerializeField] private GameObject winText; // the text to display when the player gets a win
     [SerializeField] private float textDisplayTime = 5f; // how long the text shows for
+    [SerializeField] private GameObject outOfMoney; // shows text after player runs out of money
+
+    private int Losses = 0; // counts how many losses after the player gets a win
+    private bool playerWonLast = false; // sees if player won 
+
 
     private void Start()
     {
@@ -25,15 +30,28 @@ public class PressFtoSpinSlots : MonoBehaviour
         {
             winText.SetActive(false);
         } 
+
+        if (winText != null)
+        {
+            outOfMoney.SetActive(false);
+        } 
     }
 
     private void OnTriggerEnter(Collider other)
     {   
         if (other.CompareTag("Player"))
         {
-            uiElement.SetActive(true);
-        }
-    }
+
+            if (Losses < 4) // once player has lost 4 times it no longer shows the "press f to spin" text
+            {
+                uiElement.SetActive(true);
+            }
+            else
+            {
+                ShowOutMoneyText();
+            }
+        }    
+    }   
 
     private void OnTriggerExit(Collider other)
     {
@@ -43,15 +61,22 @@ public class PressFtoSpinSlots : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        // Checking for input from the player
+    private void Update() 
+  {
+        // Checks for input from player
         if (uiElement.activeSelf && Input.GetKeyDown(KeyCode.F))
         {
-            PlayRandomAudio(); 
+            if (Losses < 4) // lets player keep spinning if less than 4 losses
+            {
+                PlayRandomAudio(); 
+            }
+            else
+            {
+                Debug.Log("ran out of money");
+                ShowOutMoneyText();
+            }
         }
     }
-
 
 
     // This basically checks against the probability to see which sound to play then plays it
@@ -66,10 +91,23 @@ public class PressFtoSpinSlots : MonoBehaviour
         {
             slotsWin.Play();
             ShowWinText(); 
+            Losses = 0;
+            playerWonLast = true;
         }
         else
         {
             slotsLose.Play();
+
+            if (playerWonLast) // only counts losses after a win
+            {
+                Losses++;
+                Debug.Log("losses: " + Losses); // shows how many losses
+
+                if (Losses >= 4)
+                {
+                    ShowOutMoneyText();
+                }
+            }
         }
         
     }
@@ -109,6 +147,20 @@ public class PressFtoSpinSlots : MonoBehaviour
         }
         
 
+    }
+
+    private void ShowOutMoneyText()
+    {
+        if (outOfMoney != null)
+        {
+            outOfMoney.SetActive(true);
+            Debug.Log("no money, showing text");
+        }
+
+        if (uiElement != null)
+        {
+            uiElement.SetActive(false); // hides press f to spin text after player lost all money
+        }
     }
 
 }
