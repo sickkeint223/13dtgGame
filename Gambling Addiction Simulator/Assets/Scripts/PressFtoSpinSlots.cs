@@ -5,7 +5,7 @@ using UnityEngine;
 public class PressFtoSpinSlots : MonoBehaviour
 {
 
-    [SerializeField] private GameObject uiElement; // the text
+    [SerializeField] private GameObject uiElement; // the text 
     [SerializeField] private AudioSource slotsWin; // winning audio
     [SerializeField] private AudioSource slotsLose; // losing audio
     [SerializeField] private float probability = 0.1f; // probability to play the slots winning audio
@@ -20,7 +20,7 @@ public class PressFtoSpinSlots : MonoBehaviour
 
     private void Start()
     {
-        // ui element is active
+        // ui element, wintext and outomoney is set to false
         if (uiElement != null)
         {
             uiElement.SetActive(false);
