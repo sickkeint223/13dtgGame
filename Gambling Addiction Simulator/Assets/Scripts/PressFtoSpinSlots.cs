@@ -155,6 +155,8 @@ public class PressFtoSpinSlots : MonoBehaviour
         {
             outOfMoney.SetActive(true);
             Debug.Log("no money, showing text");
+
+            StartCoroutine(hideOutOfMoneyTextAfterDelay(7f));
         }
 
         if (uiElement != null)
@@ -163,4 +165,15 @@ public class PressFtoSpinSlots : MonoBehaviour
         }
     }
 
+    private IEnumerator hideOutOfMoneyTextAfterDelay(float delay)
+
+    {
+        yield return new WaitForSeconds(delay); // waits for the float time
+
+        if (outOfMoney != null)
+        {
+            outOfMoney.SetActive(false); // hides the text   
+            Debug.Log("hiding out of money text");
+        }
+    }
 }
