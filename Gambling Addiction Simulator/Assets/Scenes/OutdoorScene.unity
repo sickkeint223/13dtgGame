@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.06316645, g: 0.07161734, b: 0.0795644, a: 1}
+  m_IndirectSpecularColor: {r: 0.06319003, g: 0.07160307, b: 0.07966081, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12611,7 +12611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957311681}
   m_Layer: 0
-  m_Name: nextScene
+  m_Name: Triggers/nextScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
