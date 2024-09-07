@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PressKeyChangeScene : MonoBehaviour
+public class ChangeSceneEnd : MonoBehaviour
 {
     [SerializeField] private GameObject uiElement;
     [SerializeField] private string Scene;
@@ -17,6 +17,7 @@ public class PressKeyChangeScene : MonoBehaviour
             uiElement.SetActive(false);
         }
 
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,5 +45,10 @@ public class PressKeyChangeScene : MonoBehaviour
         }
     }
 
+    public IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(Scene);
+    }
 
 }
